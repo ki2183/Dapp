@@ -1,0 +1,123 @@
+:root{
+   --ps:#ac0534;
+ }
+
+.container-login{
+   width: 100%;
+   height: 800px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.login-case{
+   display: flex;
+   margin-top:100px ;
+   width: 400px;
+   height: 700px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   border-radius: 15px;
+   gap: 2px;
+
+}
+#login-title{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: start;
+   height: 20%;
+   width: 100%;
+   margin: 20px;
+}
+#login-title>h1,#login-title>p{
+   padding: none;
+   margin: 0;
+}
+#login-title>p>a{
+   color: var(--ps);
+}
+#login-frame{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   height: 70%;
+   width: 100%;
+}
+#login-option{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   height: 80%;
+   width: 100%;
+}
+#login-frame>div{
+   width: 100%;
+   height: 120px;
+   margin-bottom: 0px;
+   display: flex;
+   flex-direction: column;
+
+}
+#login-frame>div>input[type=id],#login-frame>div>input[type=password]{
+   background-color: rgb(238, 232, 225);
+   width: 350px;
+   height: 40px;
+   outline: 1px;
+   border: none;
+   border-radius: 9px;
+   margin-top:10px;
+   margin-bottom:10px;
+   margin-right: auto;
+   margin-left: auto;
+   padding-left: 10px;
+}
+#login-frame>div>label{
+   margin-left: 20px;
+   font-size: 16px;
+}
+.err_m{
+   margin-left: 15px;
+   color: rgb(253, 58, 58);
+   font-weight: bold;
+}
+#login-frame>div>input[type=id]:focus,#login-frame>div>input[type=password]:focus{
+   border: 3px solid var(--ps);
+}
+.login-button{
+   margin-top: 20px;
+   border: none;
+   background-color: #666;
+   border-radius: 30px;
+   width: 370px;
+   height: 45px;
+   font-size: 20px;
+   font-weight: bold;
+   color: antiquewhite;
+}
+#line_{
+   width: 400px;
+   height: 2px;
+   background-color: var(--ps);
+}
+.login-button:first-child{
+   background-color: #4179f1;
+}
+.login-button:nth-child(2){
+   background-color: #2db400;
+}
+.login-button:nth-child(3){
+   background-color: #f9e000;
+   color: #1b1b1b;
+}
+#login-button-first{
+   background-color:var(--ps);
+   margin-bottom: 15px;
+   margin-top: -10px;
+   color: antiquewhite;
+   
+}
+button:hover{
+   cursor: pointer;
+}

@@ -1,0 +1,236 @@
+:root {
+    --main-bg-color: rgb(250, 250, 250);
+  }
+
+.container_order{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    width: 100%;
+    /* overflow-x: hidden; */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-color: #f5f5f5;
+    margin-top: 80px;
+}
+.order_frame{
+    margin-top:10px;
+    width: 600px;
+    height: 100vh;
+    display: flex;
+    gap: 10px;
+
+}
+
+#menu_frame{
+    width: 100%;
+    height:auto;
+    display: flex;
+    flex-direction: column;
+    
+}
+#menu_frame_title{
+    width: 100%;
+    height: 40px;
+    border: 1.5px solid rgb(185, 185, 185);
+    background-color: var(--main-bg-color);
+}
+#basket_frame{
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-self: start;
+    align-items: center;
+}
+#basket_frame_title{
+    
+    width: 100%;
+    height: 30px;
+    border: 1px solid rgb(31, 31, 31);
+    background-color: var(--main-bg-color);
+    border-bottom: none;
+    background-color: rgb(31, 31, 31);
+    display: flex;
+    align-items: center;
+    /* justify-content: start; */
+}
+#basket_frame_title>span{
+    margin-left: 8px;
+    color: antiquewhite;
+    font-weight: bold;
+}
+
+#basket_list{
+    border-top: none;
+    width: 100%;
+    height: auto;
+    padding: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.basket_list_frame{
+    padding: none;
+    border: 1px solid rgb(185, 185, 185);
+    width: 100%;
+    height: 80px;
+    background-color: var(--main-bg-color);
+    display: flex;
+    flex-direction: column;
+}
+#cancle_button_frame{
+display: flex;
+flex-direction: column;
+/* align-items: end; */
+}
+#cancle_button_frame>button{
+    margin-top: 3px;
+    margin-right: 3px;
+    width: 13px;
+    height: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.basket_list_frame>div,.basket_list_frame>span{
+    margin-left: 3px;
+}
+.basket_list_frame>div>button{
+    margin-top: 3px;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#num_control{
+    display: flex;
+    flex-direction: row;
+}
+#num_control>span{
+    width: 18px;
+    margin-right:2px ;
+    text-align: end;
+}
+.total_price{
+    padding: none;
+    border: 1px solid rgb(185, 185, 185);
+    width: 100%;
+    height: 30px;
+    background-color: var(--main-bg-color);
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: medium;
+    display: flex;
+    align-items: center;
+    /* justify-content: end; */
+}
+.total_price>span{
+    margin-right:8px ;
+}
+#start_order{
+    width: 100%;
+    height: 30px;
+    padding: 0;
+    border: 1px  #ff3232;
+    background-color: #ff3232;
+    border-radius: none;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+#start_order>span{
+    margin-right: 8px;
+    color: antiquewhite;
+    font-weight: bold;
+}
+
+
+
+#shop_info{
+    width: 100%;
+    height: 100px;
+    border: 1.5px solid rgb(185, 185, 185);
+    border-top: none;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+ background-color: var(--main-bg-color);
+}
+#shop_img{
+    width: 80px;
+    height:80px;
+    border: 1.5px solid rgb(185, 185, 185);
+    margin-left: 9px;
+}
+#shop_intro{
+    width: 200px;
+    height: 80px;
+    border: 1.5px solid rgb(185, 185, 185);
+ background-color: var(--main-bg-color);
+}
+
+
+
+
+#menu_list{
+    width: 100%;
+    height: auto;
+    border: 1.5px solid rgb(185, 185, 185);
+ background-color: var(--main-bg-color);
+}
+#menu_intro{
+    width: 100%;
+    height: 30px;
+    border-bottom: 1.5px solid rgb(185, 185, 185);
+}
+.menu_frame_{
+    width: 100%;
+    height: 100px;
+    border-bottom: 1.5px solid rgb(185, 185, 185);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+.menu_info_{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+.menu_info_ > p{
+    margin: 2px;
+    font-size: 12px;
+}
+.menu_info_ > div{
+    display: flex;
+    gap: 1px;
+}
+.menu_info_>div>button{
+    border:1px solid rgb(185, 185, 185);
+    border-radius: 0;
+    margin-top: 10px;
+
+    /* transition: all 1s ease-in-out; */
+}
+.menu_info_>div>button:hover{
+    font-weight:bold;
+}
+
+.menu_img_{
+    padding: none;
+    width: 80px;
+    height: 80px;
+    border: 1.5px solid rgb(185, 185, 185);
+    margin-right: 15px;
+}
+
+
+

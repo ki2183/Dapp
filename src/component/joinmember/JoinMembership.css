@@ -1,0 +1,97 @@
+:root{
+        --ps:#ac0534;
+      }
+
+.container-join{
+        padding-top: 150px;
+        display: flex;
+        justify-content: center;
+        
+      
+}
+.join-case{
+        display: flex;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* border: 1px solid #666; */
+   
+        gap: 20px;
+}
+.join-case>div>input[type=text],.join-case>div>input[type=password]{
+        width: 400px;
+        height: 45px;
+        background-color: rgb(238, 232, 225);
+        outline: none;
+        border: none;
+        border-radius: 9px;
+        padding-left:10px ;
+}
+.join-case>div>input[type=text]:focus,.join-case>div>input[type=password]:focus{
+        border: 2px solid var(--ps);
+}
+#post-join{
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        
+
+}
+#post-join>div{
+  display: flex;
+  flex-direction: row;
+  gap: 1px;
+}
+
+#personId-join>input[type=text],#personId-join>input[type=password]{
+        width: 190px;
+        height: 40px;
+        margin: 3px;
+}
+#personId_after{
+        width: 100px;
+        height: 40px;
+        margin: 3px;
+}
+#post-join>div>input[type=text]{
+        width: 100%;
+        height: 45px;
+        margin: 3px;
+        background-color: rgb(238, 232, 225);
+        outline: none;
+        border: none;
+        border-radius: 9px;
+}
+#post-join>div>input[type=text]:focus{
+        border: 2px solid var(--ps);
+}
+#personId-join>select,#post-join>div>select{
+        height: 46.5px;
+        width: 100px;
+        margin: 3px;
+        
+}
+.join-case>input[type=submit]{
+        margin-left: 10px;
+        width: 410px;
+        height: 50px;
+        margin-bottom: 100px;
+        color: antiquewhite;
+        background-color: var(--ps);
+        border: none;
+        border-radius: 30px;
+        font-weight: bold;
+        font-size: 20px;
+}
+.join-case>div>p{
+        font-size: 16px;
+        font-weight: 300;
+}
+.err_mess{
+        color: var(--ps);
+        font-weight: bold;
+        
+}
+
