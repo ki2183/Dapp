@@ -3,10 +3,11 @@ import Mainbanner from './main/Mainbanner';
 import Nav from './nav/Nav';
 import Join from './joinmember/JoinMembership';
 // import Od from './order/order';
-// import Infopatch from './infopatch/Infopatch';
+import Infopatch from './infopatch/Infopatch';
 import Category from './category/category';
 import Serchbar from './search_/Searchbar';
 import Login from './login/Login';
+
 
 function Home(){
     return <div>
@@ -16,7 +17,6 @@ function Home(){
 }
 
 function AppRouter(){
-
     return <BrowserRouter>
     <Nav/>
          <Routes>
@@ -25,7 +25,7 @@ function AppRouter(){
                 <Route path="/joinmember" element={<Join/>}></Route>
                 <Route path="/category/*" element={<Category />}></Route>
                 {/* <Route path="/order/*" element={<Od/>}></Route> */}
-                {/* <Route path='/infopatch/*' element={<Infopatch/>}></Route> */}
+                <Route path='/infopatch/*' element={<Infopatch/>}></Route>
             </Routes>
     </BrowserRouter>
 }

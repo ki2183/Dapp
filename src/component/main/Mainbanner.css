@@ -3,7 +3,7 @@
     /* height:700px; */
     height: 120%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 50px;
@@ -46,6 +46,10 @@ a{
     text-decoration: none;
 }
 
+#empty{
+    width: 100px;
+    height: 100px;
+}
 
   
 /* ----------------------------------------- */

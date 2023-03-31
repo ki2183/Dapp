@@ -42,6 +42,7 @@ function Mainbanner(probs){
   return (
     <div className="container_main">
         <Menulist list={data}></Menulist>
+        <div id='empty'></div>
     </div>
   );
 }
