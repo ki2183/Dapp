@@ -1,7 +1,7 @@
-import"./Infopatch.css";
+import"./Userupdate.css";
 import { useForm, useFormState } from 'react-hook-form';
 import { useEffect, useRef, useState } from "react";
-import userdata from '../../dumydata/user.json'
+import userdata from '../../../dumydata/user.json';
 
 function InfoMain({Setuser, user, userdata}){
 
@@ -106,7 +106,7 @@ function CheckPassword({password,pcheck, setPcheck}){
     </div>
 }
 
-function Infopatch(){
+function UserUpdate(){
 
     const [user,setUser] = useState([]);
     const [main,setMain] = useState([]);
@@ -138,4 +138,4 @@ function Infopatch(){
     </div>);
 }
 
-export default Infopatch;
+export default UserUpdate;

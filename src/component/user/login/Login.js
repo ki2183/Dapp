@@ -11,7 +11,7 @@ function Login(){
       <div className='login-case'>
       <div id='login-title'>
         <h1>로그인</h1>
-        <p>아이디가 없으십니까? <a href='/joinmember'>회원가입하기</a></p>
+        <p>아이디가 없으십니까? <a href='/userSave'>회원가입하기</a></p>
       </div>
         <form id="login-frame"method='post' onSubmit={handleSubmit(onSubmit)}>
         <div>

@@ -1,123 +1,145 @@
-import './order.css';
+import "./order.css"
+import menulist from "./dumy.json"
+import { useEffect,useState } from "react";
+import axios from "axios";
 
-import {Menu} from "../menu.js"
-import { useEffect, useState } from 'react';
+function Basket(){
+    return <div className="container-basket">
 
-function Menulist(probs){
-    const menu = new Menu().list;
-    const shop = menu[0].shop[0];
-    const S = shop;
-    const menu_li=[];
-    const menu_num = [];
-
-    for(let i=0; i<S.menu.length; i++){
-        menu_num.push(0);
-        menu_li.push(<div key={`menu${i}`} className="menu_frame_">
-            <div className="menu_info_" >
-                <p>{S.menu[i].name}</p>
-                <p>{S.menu[i].price}원</p>
-                <div>
-    
-                <button type='button' onClick={(e)=>{
-                    e.preventDefault();
-                    probs.AddBasket(S.menu[i].name,S.menu[i].price);
-                }} >담기</button>
-                </div>
-            </div>
-            <div className='menu_img_'></div>
-        </div>);
-    }
-    return <div id='menulist_frame'>
-        {menu_li}
     </div>
-}
- 
-function Od(){
-    const menu = new Menu().list;
-    const shop = menu[0].shop[0];
+} 
 
-    const [create, setCreate] = useState([]);
-    const [orderlist,setOrderlist] = useState([]);
-    const [lastbasket,setLastbasket] = useState([]);
-    
-    useEffect(()=>{
-        const create_ = [...create];
-        let orderlist_ = [];
-        for(let i=0; i<create_.length; i++){
-            orderlist_.push(<div key={`orderlist${i}`} className='basket_list_frame'>
-                <div id='cancle_button_frame'><button onClick={(e)=>{
-                    e.preventDefault();
-                    const create_ = [...create];
-                    const lastbasket_ = [...lastbasket];
-
-                    create_.splice(i,1);
-                    setCreate(create_);
-                    lastbasket_.splice(i,1);
-                    setLastbasket(lastbasket_);
-
-                }}>×</button>
-                </div>
-                <span>{create[i]}</span>
-                <div id='num_control'>
-                    <button onClick={()=>{
-                        if(lastbasket[i]>1){
-                        const lastbasket_ =[...lastbasket];
-                        lastbasket_[i]-=1;
-                        setLastbasket(lastbasket_);
-                    }
-                    }}>-</button>
-                    <span>{lastbasket[i]}</span>
-                    <button onClick={()=>{
-                        const lastbasket_ =[...lastbasket];
-                        lastbasket_[i]+=1;
-                        setLastbasket(lastbasket_);
-                    }}
-                    >+</button>
-                </div>
-                <span>총가격</span>
-            </div>);
-        }
-        setOrderlist(orderlist_);
-    },[create,lastbasket]);
-    
-    return <div className="container_order"> 
-        <div className='order_frame'>
-            <div id='menu_frame'>
-                <div id='menu_frame_title'>가게이름</div>
-                <div id='shop_info'>
-                    <div id='shop_img'></div>
-                    <div id='shop_intro'></div>
-                </div>
-
-                <div id='menu_list'>
-                    <div id='menu_intro'>메뉴</div>
-                    <Menulist AddBasket={(name,price)=>{
-                        const create_ = [...create];
-                        const lastbasket_ =[...lastbasket];
-
-                        if(create_.includes(`${name}`)===false){
-                        create_.push(name);
-                        setCreate(create_);
-                        lastbasket_.push(1);
-                        setLastbasket(lastbasket_);
-                        }
-                    }}></Menulist>
-                </div>
+function Order(probs){
+    return <div className="container-order">
+        <div className="container-order-frame">
+            <div className="order-main-image">
+                <div className="order-main-badge"></div>
             </div>
-            <div id="basket_frame">
-                <div id='basket_frame_title'><span>장바구니</span></div>
-                <div id='basket_list'>
-                    {orderlist}
-                    <div className='total_price'>
-                        <span>합계 ...원</span>
-                    </div>
-                </div>
-                <button id='start_order' onClick={(e)=>{
-                    e.preventDefault();
-                    alert();
-                }}><span>주문하기</span></button>
+
+            <div className="order-info">
+                <h1>가게 이름</h1>
+                <p>배달료</p>
+                <p>open now</p>
             </div>
+
+            <Menulist ActiveOn={probs.ActiveOn} reverse={probs.reverse} setReverse={probs.setReverse}></Menulist>
         </div>
     </div>
 }
-export default Od;
+
+function Menulist(probs){
+
+    return <div className="menulist-frame">
+                <div className="menulist">
+                        <div className="menulist-top">
+                            <div className="menulist-top-searchbar-div">
+                                <h2>모든메뉴</h2>
+                                <form>
+                                    <button onClick={e=>{
+                                        e.preventDefault();
+                                        alert();
+                                    }}>
+                                        <span className="material-symbols-outlined">search</span>
+                                    </button>
+                                    <input type="text" placeholder="메뉴를 고르세요"></input>    
+                                </form>    
+                            </div>
+                            <MenuListTop></MenuListTop>
+                            <MenulistBottom ActiveOn={probs.ActiveOn} reverse={probs.reverse} setReverse={probs.setReverse}></MenulistBottom>
+                        </div>
+                    </div>
+            </div>
+}
+
+function MenuListTop(){
+    const list = menulist.menuList;
+    const [li,setLi] = useState([]);
+
+
+    //axios     @GetMapping("/api/menu/name/{name}")
+
+    useEffect(()=>{
+        let li_=[];
+
+        list.forEach(e=>{
+            li_.push(
+                <button key={e} className="menulist-button"
+                onClick={e=>{
+                    e.preventDefault();
+                    alert();
+                }}
+                ><span className="menulist-button-span">{e}</span></button>
+            )
+        })
+
+        setLi(li_)
+    },[list])
+
+    return <div className="menulist-top-list">
+        {li}
+    </div>
+}
+function MenulistBottom(probs){
+    const [menuli,setMenuli] = useState([])
+
+    useEffect(()=>{
+        let i = 10
+        const menuli_=[]
+
+        for(let j=0; j<i; j++){
+            menuli_.push( <button key={`dk${j}`} className="menu-choice-button "
+            onClick={e=>{
+                e.preventDefault();
+                probs.ActiveOn();
+            }}
+            ><div>
+                <div className="menu-choice-intro">
+                    <h2>메뉴</h2>
+                    <p>설명</p>
+                    <p>가격</p>
+                </div>
+                <div className="menu-choice-img"> 사진</div>
+
+            </div></button>)
+        }
+        setMenuli(menuli_)
+    },[setMenuli,probs])
+
+    return <div className="menulist-bottom-frame">
+    { menuli}
+   
+    </div>
+}
+function MenuWindow(probs){
+    return <div className="menuwindow-frame">
+        <div className="menuwindow-main">
+           <button id="menucancle" onClick={e=>{e.preventDefault(); probs.ActiveOn()}}>✖</button>
+           <div>
+            
+           </div>
+            <form>
+                <button>﹢</button>
+                <input type="text"></input>
+                <button>﹣</button>
+                <button>장바구니에 추가</button>
+            </form>
+        </div>
+    </div>
+}
+
+function OrderMain(){
+    const [reverse,setReverse] = useState(false)
+
+    let window
+
+    (!reverse) ? window=undefined : window=(   <MenuWindow setReverse={setReverse} reverse={reverse} ActiveOn={()=>{
+        setReverse(!reverse)
+    }}/> )
+
+    return <div className="container-order-total">
+        <Order setReverse={setReverse} reverse={reverse} ActiveOn={()=>{setReverse(!reverse)}}/>
+        <Basket/>
+        {window}
+    </div>
+}
+export default OrderMain;

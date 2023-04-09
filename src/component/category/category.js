@@ -15,7 +15,7 @@ function ChoiceMenu(probs){
         
         probs.list.forEach(e => {
             li_.push(
-                <a href={`/category/?id=${e}`} key={e}><div><p>{e}</p></div></a>
+                <a href={`/storeList/?id=${e}`} key={e}><div><p>{e}</p></div></a>
             ); 
         });
         setLi(li_);
@@ -34,7 +34,7 @@ function Shoplist(probs){
         const shoplist_ = [];
         probs.shop_data.forEach(e => {
             if(e.category===query){
-                shoplist_.push(<a href='/order' key={`${e.shop_name}_shopinfo`}><div className='shop_div'>
+                shoplist_.push(<a href={`/order/?id=${e.shop_name}`} key={`${e.shop_name}_shopinfo`}><div className='shop_div'>
                 <div id='shopImage'></div>
                 <div id='shopIntro'><p>{e.shop_name}</p><p>배달료:{e.delivery_price}</p></div>
             </div></a>);
@@ -47,6 +47,16 @@ function Shoplist(probs){
         {shoplist}
     </div>
 }
+function ShopSearchBar(){
+    return <div className='shop-searchbar-container'>
+        <form>
+            <button>
+             <span className="material-symbols-outlined">search</span>
+            </button>
+            <input type='text'></input>
+        </form>
+    </div>
+}
 function Category(probs) {
 
     const [data,setData] = useState([]);
@@ -56,7 +66,7 @@ function Category(probs) {
     useEffect(
       () => {
         axios({
-            url: '/api/category',
+            url: '/api/storeList',
             method: 'GET'
         }).then((res) => {
             setData(res.data);
@@ -67,6 +77,7 @@ function Category(probs) {
       
   return (
     <div className="container_category">
+        <ShopSearchBar/>
         <ChoiceMenu list={data}></ChoiceMenu>
         <Shoplist query_={query_} shop_data={shop_data}></Shoplist>
     </div>

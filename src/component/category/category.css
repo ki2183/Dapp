@@ -1,13 +1,18 @@
+:root {
+    --sub-color: #D2D2D2;;
+    --ps:#ac0534;
+  }
+
 .container_category{
     width: 100%;
-    height: 900px;
+    height: 1200px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .choicemenu{
-    margin-top: 60px;
-    width: 100%;
+    /* margin-top: 60px; */
+    width: 80%;
     height: 60px;
     display: flex;
     align-items: center;
@@ -15,17 +20,17 @@
 }
 .choicemenu > a > div{
     width: 100%;
-    height: 15px;
+    height: 15px;   
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 1px solid #666;    
+    /* border-right: 1px solid #666;     */
 }
 .choicemenu > a:last-child>div{
     border-right: none
 }
 .choicemenu>a{
-    font-weight:bold;
+    /* font-weight:bold; */
     display: flex;
     align-items: center;
     height: 100%;
@@ -41,47 +46,51 @@
 /* shoplist */
 
 .container_shop{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    place-items:center;
-    width: 100%;
-    grid-column-gap: 5px;
-    grid-row-gap: 8px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* grid-template-columns: 1fr 1fr 1fr; */
+    /* place-items:center; */
+    width: 80%;
+    height:900px;
+    gap: 15px;
+    /* align-content: start; */
+    justify-content: center;
 }
 .container_shop>a{
-    width: 90%;
-    height:120px;
+    /* width: 90%; */
+    /* height:120px; */
 }
 .shop_div{
-    width: 90%;
-    height:120px;
+    width: 350px;
+    height:250px;
     background-color: #FFFFFD;
-    border: 2px solid #D2D2D2;
+    /* border: 2px solid #D2D2D2; */
     display: flex;
-    align-items: center;
-    gap: 15px;
+    flex-direction: column;
+    /* align-items: start; */
+    gap: 5px;
     transition: all 0.1s ease-in;
-}
-.shop_div:hover{
-    border: 2px solid #909090;
-    color: black;
 }
 #shopImage{
     margin-left: 15px;
-    width: 90px;
-    height: 90px;
-    border: 1px solid #D2D2D2;
+    width: 300px;
+    height: 150px;
+    border-radius: 8px;
+    border: 1px solid #a8a8a8;
 }
 
 #shopIntro > p:first-child{
     font-weight: 600;
     color: #2a2a2a;
     font-size: 16px;
-    margin: 5px;
+    margin-left: 15px;
 }
 #shopIntro > p{
     font-size: 11px;
-    margin: 5px;
+    margin-left: 15px;
+    padding: 0;
 }
 @media screen and (max-width: 900px) {
     .container_shop{
@@ -92,4 +101,49 @@
         grid-column-gap: 5px;
         grid-row-gap: 8px;
     }
+}
+
+/* ---------------------------------------- */
+
+.shop-searchbar-container{
+    margin-top: 60px;
+    width: 80%;
+    height: 50px;
+    display: flex;
+}
+.shop-searchbar-container>form{
+    width: 300px;
+    height: 35px;
+    background-color: rgb(238, 232, 225);   
+    border-radius: 50px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-top: auto;
+}
+.shop-searchbar-container>form:hover{
+    border:2px solid var(--ps);
+}
+.shop-searchbar-container>form>button{
+    background-color: none;
+    width: 30px;
+    height:30px;
+    background-color:transparent;
+    border: none;
+}
+.shop-searchbar-container>form>button>span{
+    color: #666;
+    width: 30px;
+    height:30px;
+    padding: 0;
+}
+.shop-searchbar-container>form>input[type=text]{
+    border: none;
+    width: 235px;
+    height: 25px;
+    outline: none;
+    background-color: transparent;
+    padding-left: 15px;
 }

@@ -23,7 +23,7 @@ function SemiNav(probs){
     <div id='seminav_empty'></div>
     <div className='seminav_list_container'>
     <a href='/logout'><div className='seminav_list'><p>로그아웃</p></div></a>
-    <a href='/infopatch'><div className='seminav_list'><p>정보수정</p></div></a>
+    <a href='/userUpdate'><div className='seminav_list'><p>정보수정</p></div></a>
     <a href='/basket'><div className='seminav_list'><p>장바구니</p></div></a>
     </div>
   </div>

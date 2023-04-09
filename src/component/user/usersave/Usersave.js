@@ -1,9 +1,9 @@
-import './JoinMembership.css';
+import"./Usersave.css";
 import { useForm } from 'react-hook-form';
 
-function Join(){
+function Usersave(){
     const { register, handleSubmit, watch ,formState: { isSubmitting, isDirty, errors }, } = useForm({});
-    const password = watch("password", "");
+    const password = watch("input_pw", "");
     const onsubmit = async data => {
         await new Promise((r) => setTimeout(r, 1000));
         console.log(password)
@@ -27,9 +27,9 @@ function Join(){
             <form className='join-case' name='form' method='get' onSubmit={e=>e.preventDefault()}>
                 <div>
                     <p>아이디</p>
-                    <input type='text' name='id' placeholder='아이디' 
-                    aria-invalid={!isDirty ? undefined : errors.id ? "true" : "false"}
-                    {...register("id", {
+                    <input type='text' name='input_id' placeholder='아이디' 
+                    aria-invalid={!isDirty ? undefined : errors.input_id ? "true" : "false"}
+                    {...register("input_id", {
                       required: "아이디는 필수 입력입니다.",
                       minLength:{
                         value:4,
@@ -38,12 +38,12 @@ function Join(){
                     })}
                     />
                 </div>
-                {errors.id && <small role="alert" className='err_mess'>{errors.id.message}</small>}
+                {errors.input_id && <small role="alert" className='err_mess'>{errors.input_id.message}</small>}
                 <div>
                     <p>비밀번호</p>
-                    <input type='password' name="password" placeholder='비밀번호'
-                       aria-invalid={!isDirty ? undefined : errors.password ? "true" : "false"}
-                       {...register("password", {
+                    <input type='password' name="input_pw" placeholder='비밀번호'
+                       aria-invalid={!isDirty ? undefined : errors.input_pd ? "true" : "false"}
+                       {...register("input_pw", {
                          required: "비밀번호는 필수 입력입니다.",
                          minLength: {
                            value: 8,
@@ -52,7 +52,7 @@ function Join(){
                        })}
                     />
                 </div>
-                {errors.password && <small role="alert" className='err_mess'>{errors.password.message}</small>}
+                {errors.input_pw && <small role="alert" className='err_mess'>{errors.input_pw.message}</small>}
                 
                 <div>
                     <p>비밀번호 재확인</p>
@@ -75,11 +75,29 @@ function Join(){
                     />
                 </div>
                 {errors.name && <small role="alert" className='err_mess'>{errors.name.message}</small>}
+
+                <div id='gender-join'>
+                    <p>성별</p> 
+                    <div>
+                        <select id="gender" name="gender" aria-label="설병"
+                         aria-invalid={!isDirty ? undefined : errors.gender ? "true" : "false"}
+                         {...register("gender",{
+                         required:"성별 선택은 필수입니다."
+                        })}
+                         >
+                            <option value="">성별</option>
+                            <option value="man">남</option>
+                            <option value="woman">여</option>
+                        </select>
+                    </div>
+                    {errors.gender && <small role="alert" className='err_mess'>{errors.gender.message}</small>}
+                </div>
+
                 <div id='personId-join'>
                     <p>주민번호</p>
-                    <input type='text' name="yy" class="personId" placeholder='6자 입력바랍니다'
-                        aria-invalid={!isDirty ? undefined : errors.yy ? "true" : "false"}
-                        {...register("yy",{
+                    <input type='text' name="front" clasnames="personId" placeholder='6자 입력바랍니다'
+                        aria-invalid={!isDirty ? undefined : errors.front ? "true" : "false"}
+                        {...register("front",{
                         required:"주민번호 앞자리를 입력해주세요"
                         ,pattern:{
                             value: /[0-9]{6}/,
@@ -87,9 +105,9 @@ function Join(){
                         }
                        })}
                     />
-                    <input type='password' name="dd" placeholder='7자 입력 바랍니다'
-                       aria-invalid={!isDirty ? undefined : errors.dd ? "true" : "false"}
-                       {...register("dd",{
+                    <input type='password' name="rear" placeholder='7자 입력 바랍니다'
+                       aria-invalid={!isDirty ? undefined : errors.rear ? "true" : "false"}
+                       {...register("rear",{
                        required:"주민번호 뒷자리를 입력해주세요."
                        ,pattern:{
                         value: /[0-9]{7}/,
@@ -98,8 +116,8 @@ function Join(){
                       })}
                     />
                 </div>
-                    {errors.yy && <small role="alert" className='err_mess'>{errors.yy.message}</small>}
-                    {!errors.yy &&errors.dd && <small role="alert" className='err_mess'>{errors.dd.message}</small>}
+                    {errors.front && <small role="alert" className='err_mess'>{errors.front.message}</small>}
+                    {!errors.front &&errors.rear && <small role="alert" className='err_mess'>{errors.rear.message}</small>}
                    
                 <div>
                     <p>휴대전화</p>
@@ -162,4 +180,4 @@ function Join(){
   );
 }
 
-export default Join;
+export default Usersave;

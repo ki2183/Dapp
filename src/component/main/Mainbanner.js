@@ -9,7 +9,7 @@ function Menulist(probs){
       const menu_ = [];
       for(let i=0; i<probs.list.length; i++){
         menu_.push(
-            <a href={`/category/?id=${probs.list[i]}`} key={`menu_${i}_`}>
+            <a href={`/storeList/?id=${probs.list[i]}`} key={`menu_${i}_`}>
               <div className='menu-div' id={probs.list[i]} key={`menu_${i}_div`}>
                 <p>{probs.list[i]}</p></div></a>
         );
