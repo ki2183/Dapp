@@ -1,0 +1,19 @@
+
+.container-test{
+    width: 1000px;
+    height: auto;
+    background-color: blanchedalmond;
+    
+}
+.container-child{
+    width: 900px;
+    height: 150px;
+    background-color: black;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.etc{
+    width: 900px;
+    height: 150px;
+}

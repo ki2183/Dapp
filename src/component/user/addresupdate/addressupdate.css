@@ -1,0 +1,29 @@
+.container-address{
+    width: 600px;
+    height: 800px;
+    /* background-color: beige; */
+    margin-top: 100px;
+}
+.form-address{
+    margin-right:auto;
+    margin-left:auto;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    /* background-color: black; */
+}
+.address_button{
+    width:360px;
+    height:40px;
+    margin-left: auto;
+    margin-right:auto;
+    margin-top:15px;
+    border: none;
+    border-radius: 7px;
+    background-color: #666;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+

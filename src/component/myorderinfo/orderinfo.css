@@ -1,0 +1,157 @@
+.container-orderinfo{
+    margin-top: 60px;
+    width: 100%;
+    height: 100vh;
+    background-color: #dddddd;
+}
+.container-orderinfo-frame{
+    width: 50%;
+    background-color: #dddddd;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 50px;
+}
+
+
+
+/* --------------------------------------------------------------- */
+.order-frame{
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+
+    margin-bottom: 100px;
+
+}
+/* --------------------------------------------------------------- */
+.order-date-frame{
+    margin-bottom: 10px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.order-date-frame>p{
+    margin: 0;
+    margin-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: rgb(22, 22, 22);
+ 
+}
+.order-date-frame>p:first-child{
+    font-size: 16px;
+    font-weight: bold;
+}
+.order-date-frame>button{
+    margin-right: 10px;
+    font-size: 13px;
+    font-weight: lighter;
+    width: 80px;
+    height: 25px;
+    background-color: white;
+    border: 1px solid rgb(175, 175, 175);
+}
+
+/* --------------------------------------------------------------- */
+.order-etc-frame{
+    background-color: white;
+    margin-bottom: 10px;
+}
+.order-etc-frame>p{
+    
+    
+}
+.order-etc-storename{
+    margin: 0;
+    margin-top: 5px;
+    font-size: 16px;
+    padding-top: 5px;
+    margin-left: 5px;
+
+}
+.order-etc-shortmenu{
+    margin: 0;
+    margin-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 20px;
+    font-size: 12px;
+}
+/* --------------------------------------------------------------- */
+.order-totalprice-frame{
+    background-color: white;
+    margin-top: 10px;
+}
+
+.order-pay-p{
+    margin: 0;
+    margin-left:10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+}
+.order-price-div{
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgb(235, 235, 235);
+    border-bottom: 1px solid rgb(235, 235, 235);
+    height: 30px;
+    align-items: center;
+}
+.order-price-p{
+    margin-left:10px;
+}
+.order-totalprice-p{
+    margin-right:10px;
+    font-weight: bold;
+}
+/* --------------------------------------------------------------- */
+
+.order-total-frame{
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+    align-items: center;
+    border-bottom: 1px solid rgb(235, 235, 235);
+}
+.order-total-frame>p:nth-child(1){
+    margin-left: 10px;
+
+}
+.order-total-frame>p:nth-child(2){
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* --------------------------------------------------------------- */
+.order-menus-div{
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(235, 235, 235);
+}
+.order-menus-div>:last-child{
+    
+}
+.order-menus-div>p{
+    
+    
+}
+.order-menus-name{
+    margin: 0;
+    margin-left: 10px;
+    font-size: 13px;
+    font-weight: bold;
+}
+.order-menus-count{
+    margin: 0;
+    margin-left: 10px;
+    font-size: 12px;
+    
+}
+.order-menus-price{
+    margin: 0;
+    margin-left: 10px;
+    font-size: 13px;
+    font-weight: bold;
+}

@@ -1,0 +1,305 @@
+:root{
+    --basketbg:#e7e7e7;
+    --basketframe:#fcfcfc;
+  }
+
+.container-totalorder{
+    width: 99vw;
+    /* width: 800px; */
+    margin-left: auto;
+    margin-right: auto;
+    height: 110vh;
+    background-color: var(--basketbg);
+    /* overflow-x: hidden;     */
+    padding-bottom: 150px;
+}
+.totalorder-frame{
+    margin-top: 60px;
+    width: 70vw;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: bisque; */
+    overflow-y: visible;
+    /* background-color: rgb(80, 0, 145); */
+}
+.test{
+    width: 300px;
+    height:  500px;
+    background-color: black;
+}
+.total-back{
+    width: 70vw;
+    height: 35px;
+    background-color: var(--basketframe);
+    display: flex;
+    align-items: center;
+}
+.total-back>span{
+    font-size: 20px;
+    padding-right: 0;
+}
+.total-back>p{
+    font-size: 15px;
+}
+.total-back>p:last-child{
+    font-size: 15px;
+    margin-left: auto;
+    margin-right :15px;
+}
+
+
+
+/* ------------------------------------------ */
+.total-basket{
+    margin-top: 15px;
+}
+
+/* --------------------------------------------- */
+.total-basket-storename{
+    width: 70vw;
+    height: 40px;
+    background-color: var(--basketframe);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-bottom: 1px solid #969696;
+}
+
+.basket-checkbox{
+    margin-top: 2px;
+    color: #000000;
+    padding: 0px;
+    font-size: 25px;
+    /* background-color: antiquewhite; */
+    margin-right: auto;
+    margin-left: auto;
+}
+.basket-checkbox-frame{
+    display: flex;
+    /* background-color: #7e5050; */
+}
+.total-store-name{
+    font-size: 16px;
+    font-weight: bold;
+}
+/* ------------------------------------------------------------- */
+.total-menus-frame{
+    /* padding-top: 15px; */
+    width: 100%;
+    height: 135px;
+    background-color: rgb(243, 243, 243);
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(170, 170, 170);
+}
+.basket-menus-check{
+    width: 20px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-right: 13px;
+    padding-left: 10px;
+    /* background-color: #969696; */
+}
+/* ------------------------------------------------------------- */
+.basket-menus-info{
+    width: 500px;
+    height: 135px;
+    background-color: #eeeeee;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.basket-menus-info-fst{
+    width: 500px;
+    height: 135px;
+    background-color: #eeeeee;
+    display: flex;
+    flex-direction: row;
+}
+.basket-menus-info-sec{
+    width: 100%;
+    height: 1500px;
+    background-color: #c5c5c5;
+}
+.basket-menus-info-trd{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+/* -------------------------------------------------------------------- */
+.basket-menus-img{
+    width: 100px;
+    height: 100px;
+    /* background-color: #000000; */
+    border: 1px solid #a1a1a1;
+    border-radius: 3px;
+    gap: 5px;
+    margin-top: 15px;
+}
+.basket-menus-etcinfo{
+    height: 100px;
+    width: 400px;
+    /* background-color: yellow; */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    margin-top:8px;
+}
+.basket-menus-etcinfo>p{
+    width: 400px;
+    margin: 0;
+    height: 25px;
+    margin: 0;
+    padding:0px;
+    margin-left: 15px;
+    overflow: hidden;
+}
+.basket-menus-etcinfo>p:first-child{
+    font-size: 17px;
+    font-weight: lighter;
+}
+.basket-menus-etcinfo>p:nth-child(2){
+    font-size: 17px;
+    font-weight: bold;
+}
+.basket-menus-etcinfo>p:nth-child(3){
+    font-size: 13px;
+    color: #696969;
+    font-weight: lighter;
+}
+.basket-pm-div{
+    width: 70px;
+    height: 135px;
+    display: flex;
+    margin-left: 0;
+    margin-right:0;
+    margin-bottom: auto;
+    /* border-right:1px solid #919191; */
+    
+}
+.basket-pm-div>p{
+    width: 15px;
+    margin: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    align-self: center;
+}
+.basket-pm-div>button{
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+}
+
+/* ------------------------------------------------------------------------------- */
+.basket-menus-info-sec-price-frame{
+    width: 100%;
+    height: 30px;
+    /* background-color: #000000; */
+}
+.basket-menus-info-sec{
+
+}
+.basket-menus-info-sec-price-frame{
+
+}
+.basket-menus-sec-button{
+
+}
+/* ------------------------------------------------------------ */
+.basket-delete-frame{
+    margin-left: 15px;
+    height: 135px;
+    display: flex;
+    align-items: center;
+    padding-right: 15px;
+    border-right:1px solid #919191;
+
+}
+.basket-menus-price-frame{
+    height: 135px;
+    width: 135px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:5px;
+}
+.basket-menus-price-frame>p{
+    margin: 0px;
+}
+.basket-menus-price-frame>p:nth-child(2){
+    margin: 0px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+/* -------------------------------------------- */
+.total-order-decision{
+    width: 100%;
+    height: 100px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #919191;
+}
+.total-order-decision>div{
+    height: 60px;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+
+.dicision-order-div{
+    margin-top: 20px;
+    height: 60px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.dicision-order-div>p{
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+#dicisiontotalprice{
+    color: rgb(255, 48, 48);
+}
+.dicision-order-div:nth-child(3){
+    padding-right: 15px;
+    margin-right: 15px;
+    border-right: 1px solid #292929;
+}
+.dicision-order-totalprice{
+    margin-top: 20px;
+    width: 400px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    /* background-color: #000000; */
+    gap: 10px;
+
+}
+
+.dicision-order-totalprice>p{
+    font-size: 18px;
+    font-weight:bold;
+}
+.dicision-order-totalprice>button{
+    height: 50px;
+    width: 200px;
+    border:0px;
+    background-color: #c5c5c5;
+    border-radius: 5px;
+}
