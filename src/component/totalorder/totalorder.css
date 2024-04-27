@@ -4,36 +4,32 @@
   }
 
 .container-totalorder{
-    width: 99vw;
-    /* width: 800px; */
+    background-color: var(--basketbg);
+    height: 110vh;
     margin-left: auto;
     margin-right: auto;
-    height: 110vh;
-    background-color: var(--basketbg);
-    /* overflow-x: hidden;     */
     padding-bottom: 150px;
+    width: 99vw;
 }
 .totalorder-frame{
-    margin-top: 60px;
-    width: 70vw;
     height: auto;
     margin-left: auto;
     margin-right: auto;
-    /* background-color: bisque; */
     overflow-y: visible;
-    /* background-color: rgb(80, 0, 145); */
+    padding-top: 50px;
+    width: 900px;
 }
 .test{
     width: 300px;
-    height:  500px;
+    height: 500px;
     background-color: black;
 }
 .total-back{
-    width: 70vw;
-    height: 35px;
+    align-items: center;
     background-color: var(--basketframe);
     display: flex;
-    align-items: center;
+    height: 35px;
+    width: 900px;
 }
 .total-back>span{
     font-size: 20px;
@@ -52,18 +48,31 @@
 
 /* ------------------------------------------ */
 .total-basket{
+    background-color: #fff;
     margin-top: 15px;
 }
 
 /* --------------------------------------------- */
 .total-basket-storename{
-    width: 70vw;
-    height: 40px;
+    align-items: start;
     background-color: var(--basketframe);
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 5px;
-    border-bottom: 1px solid #969696;
+    height: 50px;
+    justify-content: start;
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 850px;
+}
+.total-basket-storename:after {
+    background-color: #000;
+    content: "";
+    display: block;
+    height: 2px;
+    margin-right: 35px;
+    width: 850px;
+    margin-top: -13px;
 }
 
 .basket-checkbox{
@@ -85,39 +94,35 @@
 }
 /* ------------------------------------------------------------- */
 .total-menus-frame{
-    /* padding-top: 15px; */
-    width: 100%;
-    height: 135px;
-    background-color: rgb(243, 243, 243);
-    display: flex;
     align-items: center;
-    border-bottom: 1px solid rgb(170, 170, 170);
+    background-color: #fff;
+    border-bottom: 1px solid #aaa;
+    display: flex;
+    height: 135px;
+    margin-left: 25px;
+    margin-right: 25px;
+    width: 850px;
 }
 .basket-menus-check{
-    width: 20px;
-    height: 100%;
-    display: flex;
     align-items: center;
-    padding-right: 13px;
-    padding-left: 10px;
-    /* background-color: #969696; */
+    display: flex;
+    height: 100%;
 }
 /* ------------------------------------------------------------- */
 .basket-menus-info{
-    width: 500px;
-    height: 135px;
-    background-color: #eeeeee;
+    background-color: #fff;
     display: flex;
+    height: 135px;
     flex-direction: column;
-    
+    width: 530px;
 }
 
 .basket-menus-info-fst{
-    width: 500px;
-    height: 135px;
-    background-color: #eeeeee;
+    background-color: #fff;
     display: flex;
     flex-direction: row;
+    width: 300px;
+    height: 135px;
 }
 .basket-menus-info-sec{
     width: 100%;
@@ -132,54 +137,51 @@
 
 /* -------------------------------------------------------------------- */
 .basket-menus-img{
-    width: 100px;
-    height: 100px;
-    /* background-color: #000000; */
     border: 1px solid #a1a1a1;
     border-radius: 3px;
     gap: 5px;
+    height: 100px;
     margin-top: 15px;
+    width: 100px;
 }
 .basket-menus-etcinfo{
-    height: 100px;
-    width: 400px;
-    /* background-color: yellow; */
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    justify-content: center;
-    margin-top:8px;
+    gap: 2px;
+    height: 100px;
+    justify-content: start;
+    margin-top: 17px;
+    width: 200px;
 }
 .basket-menus-etcinfo>p{
-    width: 400px;
-    margin: 0;
     height: 25px;
-    margin: 0;
-    padding:0px;
-    margin-left: 15px;
+    margin: 0 0 0 20px;
     overflow: hidden;
+    padding: 0;
+    width: 200px;
 }
 .basket-menus-etcinfo>p:first-child{
-    font-size: 17px;
+    font-size: 15px;
     font-weight: lighter;
+    margin-top: 10px;
 }
 .basket-menus-etcinfo>p:nth-child(2){
     font-size: 17px;
-    font-weight: bold;
+    font-weight: 700;
+    margin-top: -5px;
 }
 .basket-menus-etcinfo>p:nth-child(3){
-    font-size: 13px;
     color: #696969;
+    font-size: 13px;
     font-weight: lighter;
 }
 .basket-pm-div{
-    width: 70px;
-    height: 135px;
     display: flex;
-    margin-left: 0;
-    margin-right:0;
+    height: 135px;
     margin-bottom: auto;
-    /* border-right:1px solid #919191; */
+    margin-left: 0;
+    margin-right: 0;
+    width: 70px;
     
 }
 .basket-pm-div>p{
@@ -203,33 +205,29 @@
     height: 30px;
     /* background-color: #000000; */
 }
-.basket-menus-info-sec{
 
-}
-.basket-menus-info-sec-price-frame{
-
-}
-.basket-menus-sec-button{
-
-}
 /* ------------------------------------------------------------ */
-.basket-delete-frame{
-    margin-left: 15px;
-    height: 135px;
-    display: flex;
+.basket-delete-frame{   
     align-items: center;
+    border-right: 1px solid #5e5e5e;
+    display: flex;
+    height: 135px;
+    margin-left: 15px;
     padding-right: 15px;
-    border-right:1px solid #919191;
 
+}
+.basket-delete-frame>button{
+    border: 1px solid #c5c5c5;
 }
 .basket-menus-price-frame{
-    height: 135px;
-    width: 135px;
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 5px;
+    height: 135px;
     justify-content: center;
-    gap:5px;
+    margin-left: 10px;
+    width: 135px;
 }
 .basket-menus-price-frame>p{
     margin: 0px;
@@ -243,35 +241,37 @@
 
 /* -------------------------------------------- */
 .total-order-decision{
-    width: 100%;
+    align-items: center;
+    border-top: 1px solid #919191;
+    bottom: 0;
+    display: flex;
     height: 100px;
     left: 0;
+    margin-left: 25px;
     right: 0;
-    bottom: 0;
-    background-color: #919191;
+    width: 850px;
 }
 .total-order-decision>div{
-    height: 60px;
-    width: 80%;
     display: flex;
     flex-direction: row;
+    height: 60px;
+    justify-content: center;
     margin-left: auto;
     margin-right: auto;
-    justify-content: center;
+    width: 80%;
 }
 
 .dicision-order-div{
-    margin-top: 20px;
-    height: 60px;
-    width: 100px;
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    height: 60px;
+    width: 100px;
 }
 .dicision-order-div>p{
-    margin: 0;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 5px 0 0;
 }
 #dicisiontotalprice{
     color: rgb(255, 48, 48);
@@ -279,27 +279,155 @@
 .dicision-order-div:nth-child(3){
     padding-right: 15px;
     margin-right: 15px;
-    border-right: 1px solid #292929;
+    border-right: 1px solid #292929; 
 }
 .dicision-order-totalprice{
-    margin-top: 20px;
-    width: 400px;
-    height: 60px;
-    display: flex;
     align-items: center;
-    /* background-color: #000000; */
+    display: flex;
     gap: 10px;
+    height: 60px;
+    width: 400px;
 
 }
 
 .dicision-order-totalprice>p{
     font-size: 18px;
-    font-weight:bold;
+    font-weight: 700;
 }
 .dicision-order-totalprice>button{
+    background-color: #fb0;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
     height: 50px;
     width: 200px;
-    border:0px;
-    background-color: #c5c5c5;
-    border-radius: 5px;
+}
+
+
+
+/* ----------------------------------------쿠폰 */
+.coupon-window-frame{
+    background-color: rgba(197, 197, 197, 0.322);
+    width: 100%;
+    height: 100%;
+    position:absolute;
+    top:0;
+    left:0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.coupon-window{
+    background-color: #f3f3f3;
+    border: 2px solid #e1e1e1;
+    height: 400px;
+    width: 300px;
+    z-index: 2;
+}
+/* -------------------------------------------쿠폰 윈도우 */
+.coupon-title{
+    align-items: center;
+    background-color: #fb0;
+    display: flex;
+    height: 40px;
+    justify-content: space-between;
+    width: 300px;
+}
+/* .coupon-title>div:nth-child(1){
+
+} */
+.coupon-title>div:nth-child(2){
+    color: #ededed;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 0 19px;
+    padding: 0;
+}
+.coupon-title>div:nth-child(3){
+    color: #ededed;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 0;
+    margin-right: 10px;
+    color: antiquewhite;
+}
+
+
+.coupon-div-coupons {
+    border: none;
+    height: 360px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 299px;
+}
+.coupons-zip {
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.201);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    justify-content: center;
+    align-items: start;
+    margin: 5px auto 10px;
+    width: 250px;
+}
+.coupons-zip>p:nth-child(1){
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+    margin-top: -4px;
+    margin-left: 40px;
+}
+.coupons-zip>p:nth-child(2){
+    margin: 0;
+    margin-top: 15px;
+    margin-left: 40px;
+}
+
+.coupons-zip>p:nth-child(3){
+    margin: 0;
+    font-size: 12px;
+    margin-left: 40px;
+}
+
+
+/* --------------쿠폰 container----------------------------- */
+.coupon-frame {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    width: 800px;
+}
+.coupon-frame>div:first-child {
+    margin-left: 15px;
+    margin-right: 30px;
+}
+.coupon-frame>div:nth-child(2) {
+    /* align-items: end; */
+    border-bottom: 1px solid #afafaf;
+    height: 18px;
+    padding-left: 150px;
+    padding-right: 15px;
+    text-align: end;
+    width: 60px;
+}.coupon-frame>div:nth-child(2) {
+    align-items: end;
+    border-bottom: 1px solid #afafaf;
+    height: 18px;
+    padding-left: 150px;
+    padding-right: 15px;
+    text-align: end;
+    width: 60px;
+}.coupon-frame>button {
+    border: 1px solid #c5c5c5;
+    margin-left: 15px;
+    margin-right: -9px;
 }

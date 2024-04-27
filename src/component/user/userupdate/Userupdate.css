@@ -109,7 +109,7 @@
 }
 .info_form>button{ 
    border: none;
-   background-color: var(--ps);
+   background-color: #d39b00;
    border-radius: 30px;
    width: 360px;
    height: 45px;
@@ -125,4 +125,7 @@
     font-size: 13px;
     margin-top: -50;
     margin-left: -140px;
+}
+.submit-myinfo{
+    box-shadow: 1px 1px 5px rgba(0,0,0,.201);
 }

@@ -1,19 +1,10 @@
-
 .container-test{
-    width: 1000px;
-    height: auto;
-    background-color: blanchedalmond;
-    
-}
-.container-child{
-    width: 900px;
-    height: 150px;
-    background-color: black;
-    margin-top: 15px;
-    margin-left: auto;
+    width: 500px;
+    height: 200px;
+    border: 1px solid black;
     margin-right: auto;
-}
-.etc{
-    width: 900px;
-    height: 150px;
+    margin-left: auto;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
 }

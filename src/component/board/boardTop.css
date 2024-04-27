@@ -1,0 +1,8 @@
+.unactice-sort-button{
+    background-color: rgba(255, 255, 255, 0.363);
+}
+.unactice-sort-button:hover{
+    cursor: no-drop;
+    background-color: rgba(255, 255, 255, 0.363);
+    color: #ffbb00;
+}

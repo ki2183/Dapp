@@ -1,37 +1,147 @@
 import"./Userupdate.css";
 import { useForm} from 'react-hook-form';
-import { useEffect, useRef, useState } from "react";
-import { useCookies } from 'react-cookie';
+import { useEffect, useState } from "react";
 import axios from "axios"
-import isEqual from 'lodash/isEqual';
 
-function InfoMain({userdto,getdata}){
-    // console.log(getdata)
-    const { register, handleSubmit, watch ,formState: { isDirty, errors }, } = useForm({});
-    const [pcheck, setPcheck] = useState(false);
-    const onSubmit=(data)=>{
-        const dto = {
-            "username" : userdto.username,
-            "name":data.name,
-            "nickName":data.nickName,
-            "address":{
-                "city":data.city,
-                "street": data.street,
-                "zipcode":data.zipcode
-            },
-            "gender" : getdata.gender
+
+function InfoMain(probs){
+
+    const token = (JSON.parse(localStorage.getItem('token')) && JSON.parse(localStorage.getItem('token')).token) ? (JSON.parse(localStorage.getItem('token')).token) : null
+    const { register, handleSubmit } = useForm({});
+    const [userDto,setUserDto] = useState({})
+    const [view,setView] = useState()
+
+    useEffect(()=>{
+        const getData = () => {
+           
+            axios.get(`/users/${token.id}`)
+            .then(res=>{
+                console.log(res.data)
+                console.log(res.data.data)
+                const getdata_ = res.data.data;
+
+                setUserDto(getdata_)
+                
+            })
+            .catch(err=>{
+                console.log(err)
+            })
         }
-        alert(JSON.stringify(dto))
+        // const dto = {
+        //     "username" : "김기준",
+        //     "name":"김기준",
+        //     "nickName":"김기준",
+        //     "address":{
+        //         "city":"Osan-si",
+        //         "street": "99-18, Gyeonggi-daero, Osan-si, Gyeonggi-do",
+        //         "zipcode":"18146"
+        //     }
+        // }
+        // setUserDto(dto)
+        getData()
+    },[])
 
-        axios.put(`/users/${userdto.id}/update`, JSON.stringify(dto), {
+    useEffect(()=>{
+
+        const validateName = (value) => {
+            if (value === "") {
+              return "빈칸을 채우세요.";
+            }
+            return true;
+          };
+
+          const validatePost = (value) => {
+            if (value === "") {
+              return "빈칸을 채우세요";
+            } else{
+                if(!/^[0-9]*$/.test(value)){
+                    return "숫자만 입력 가능합니다.";
+                }
+                else{
+                    return true;
+                }
+      
+            }
+          };
+
+        console.log(userDto)
+
+        setView( 
+            <form>
+                <div className="info_form_div">
+                    <label htmlFor="name">이름</label>
+                    <input 
+                        placeholder="이름 입력은 필수입니다."
+                        defaultValue={userDto.name || ""}
+                        {...register("name", { validate: () => validateName(userDto.name) })}
+                        onChange={(e) => setUserDto({ ...userDto, name: e.target.value })}
+                        />
+                </div>
+
+                {validateName(userDto.name)!==true && <small className='err_message' role="alert">{validateName(userDto.name)}</small>}
+
+                <div className="info_form_div">
+                <label htmlFor="nickName">닉네임</label>
+                    <input
+                        type="text"
+                        placeholder="닉네임 입력은 필수입니다."
+                        defaultValue={userDto.nickName || ""}
+                        {...register("nickName", { validate: () => validateName(userDto.nickName) })}
+                        onChange={(e) => setUserDto({ ...userDto, nickName: e.target.value })}
+                    />
+                </div>
+
+                {validateName(userDto.nickName)!==true && <small className='err_message' role="alert">{validateName(userDto.nickName)}</small>}
+
+                <div className="info_form_div_aria">
+
+
+                <label htmlFor="area">주소</label>
+
+                <input type='text' name="city" placeholder='주소'
+
+                    defaultValue={userDto && userDto.address ? (userDto.address.city || ""): null}
+                    {...register("city", { validate: () => validateName(userDto.address.city) })}
+                    onChange={(e) => setUserDto({ ...userDto, address: { ...userDto.address, city: e.target.value } })}
+                    />
+
+                {userDto.address && validateName(userDto.address.city)!==true && <small className='err_message' role="alert">{validateName(userDto.address.city)}</small>}
+
+                <input type='text' name='street'  placeholder='주소'
+                    // defaultValue={(userDto && userDto.address) ? userDto.address.street:null}
+                    defaultValue={userDto && userDto.address ? (userDto.address.street || ""): null}
+                    {...register("street", { validate: () => validateName(userDto.address.street) })}
+                    onChange={(e) => setUserDto({ ...userDto, address: { ...userDto.address, street: e.target.value } })}
+                  />
+                {userDto.address && validateName(userDto.address.street)!==true && <small className='err_message' role="alert">{validateName(userDto.address.street)}</small>}
+                <input type="text" name="zipcode" placeholder='우편번호'
+                            defaultValue={userDto && userDto.address ? (userDto.address.zipcode || ""): null}
+                            {...register("zipcode", { validate: () => validatePost(userDto.address.zipcode)})} 
+                           
+                            onChange={(e) => setUserDto({ ...userDto, address: { ...userDto.address, zipcode: e.target.value } })}
+                           
+                ></input>
+                {userDto.address && validatePost(userDto.address.zipcode)!==true && <small className='err_message' role="alert">{validatePost(userDto.address.zipcode)}</small>}
+                <br/>
+    </div>
+            </form>
+        )
+    },[userDto,register])
+
+    const onSubmit=(data)=>{
+        console.log(userDto)
+   
+        // alert(JSON.stringify(userDto))
+
+        axios.put(`/users/${token.id}/update`, JSON.stringify(userDto), {
             headers: {
               'Content-Type': 'application/json'
             }
           })
           .then((response) => {
             console.log(response.data); // 전송 결과를 처리하는 코드
-            alert(JSON.stringify(dto))
-            window.location.href="/storeList/?id=CHICKEN"
+            // alert(JSON.stringify(userDto))
+            window.location.href="/storeList/"
           })
           .catch((error) => {
             console.error(error); // 오류를 처리하는 코드
@@ -39,72 +149,15 @@ function InfoMain({userdto,getdata}){
 
     };
 
-    const city=[];
-    const Do=['서울','부산','대구','인천','광주','대전','울산','경기도','경상도','충청도','전라도','강원도','제주도'];
-    const this_ = useRef();
 
-    Do.forEach(e => {
-        city.push(
-            <option key={`city${e}`} value={e}>{e}</option>
-        );
-    });
+    
 
     return  <form className="info_form" method="post" onSubmit={handleSubmit(onSubmit)}>
 
-    <div className="info_form_div">
-        <label htmlFor="name">이름</label>
-        <input type="text"
-        name="name" 
-        defaultValue={getdata.name}
-        {...register("name",{required:"! 이름은 필수입력 칸입니다."})}/>
-        {errors.name && <small className='err_message' role="alert">{errors.name.message}</small>}
-    </div>
+    {view}
 
-    <div className="info_form_div">
-        <label htmlFor="nickName">닉네임</label>
-        <input type="text"
-        name="nickName" 
-        defaultValue={getdata.nickName}
-        {...register("nickName",{required:"! 이름은 필수입력 칸입니다."})}/>
-        {errors.nickName && <small className='err_message' role="alert">{errors.nickName.message}</small>}
-    </div>
+    <button className="submit-myinfo" onClick={e=>{
 
-    <div className="info_form_div_aria">
-    <label htmlFor="area">주소</label>
-
-    <input type='text' name="city" placeholder='주소'
-        defaultValue={getdata.address.city}
-        aria-invalid={!isDirty ? undefined : errors.city ? "true" : "false"}
-        {...register("city",{required:"주소 입력은 필수입력 칸입니다."}
-    )}/>
-
-    <input type='text' name='street'  placeholder='주소'
-        defaultValue={getdata.address.street}
-        aria-invalid={!isDirty ? undefined : errors.street ? "true" : "false"}
-        {...register("street",{required:"주소 입력은 필수입력 칸입니다."}
-    )}/>
-
-    <input type="text" name="zipcode" placeholder='우편번호'
-                   defaultValue={getdata.address.zipcode}
-                 aria-invalid={!isDirty ? undefined : errors.zipcode ? "true" : "false"}
-                 {...register("zipcode",{
-                 required:"우편 번호는 필수입력 칸입니다.",
-                 minLength:{value:5,
-                    message:"5자리 미만 불가능"
-                },
-                 maxLength:{value:6,
-                    message:"6자리 초과 불가능"
-                },
-                 pattern:{
-                    value: /[0-9]/g,
-                }
-    })}></input><br/>
-            {errors.area && <small role="alert">{errors.area.message}</small>}
-            {!errors.area &&errors.street && <small role="alert">{errors.street.message}</small>}
-            {!errors.area &&!errors.street &&errors.zipcode && <small role="alert">{errors.zipcode.message}</small>}
-    </div>
-
-    <button onClick={e=>{
         }}>수정하기</button>
     <button id="secession" onClick={e=>{e.preventDefault(); window.location.href="./userremove"}}>탈퇴하기</button>
 
@@ -112,106 +165,10 @@ function InfoMain({userdto,getdata}){
 }
 
 function UserUpdate(){
-    
-    const [user,setUser] = useState([]);
-    const [main,setMain] = useState([]);
-    const [cookies] = useCookies(['token']); // 'token' 쿠키를 사용하기 위해 useCookies 사용
-    
-    const token = JSON.parse(localStorage.getItem('token'));
-
-    const nulldata =({
-        "username" : null,
-        "name":null,
-        "nickName":null,
-        "address":{
-            "city":null,
-            "street":null,
-            "zipcode":null,
-        }})
-
-
-    const [userdto,setUserDto] = useState({
-        id: null,
-        username: null,
-        name: null,
-        nickName: null,
-        address: {
-            city: null,
-            street: null,
-            zipcode: null, 
-        }  
-    });
-    
-    const [getdata,setGetdata] = useState({
-        "username" : null,
-        "name":null,
-        "nickName":null,
-        "address":{
-            "city":null,
-            "street":null,
-            "zipcode":null,
-        }})
-
-
-    useEffect(()=>{
-        const userdata = ()=>{
-            try{
-                axios.get(`/users/${token.id}`)
-                .then(res=>{
-                    const getdata_ = res.data.data;
-                    
-                    const getdata__ = {
-                        "username" : getdata_.username,
-                        "name":getdata_.name,
-                        "nickName":getdata_.nickName,
-                        "address":{
-                            "city":getdata_.address.city,
-                            "street": getdata_.address.street,
-                            "zipcode":getdata_.address.zipcode
-                        },    
-                        "gender":getdata_.gender
-                    }
-                    setGetdata(getdata__)
-                }).catch(err=>{
-                    console.log("axios"+err)
-                })
-            }
-            catch(err){
-                console.log('getdata'+err)
-            }
-        }
-        if(token!==undefined && token!==null){
-            const userdto_ = {
-                id: token.id,
-                username: token.username,
-                name: token.name,
-                nickName: token.username,
-                address: {
-                    city: token.address.city,
-                    street: token.address.street,
-                    zipcode: token.address.zipcode 
-                }
-            }
-
-
-            setUserDto(userdto_)
-            console.log(isEqual(getdata, nulldata))
-            
-            if(isEqual(getdata, nulldata))
-                userdata()
-
-            let main_;
-
-            main_=(<InfoMain userdto={userdto} getdata={getdata} />);
-
-            setMain(main_);
-        }
-    
-    },[getdata,main])
 
 
     return (<div className="info_container">
-       {main}
+       <InfoMain/>
 
     </div>);
 }

@@ -1,47 +1,31 @@
-import axios from "axios"
-import "./test.css"
-import { useState,useEffect, useRef } from "react"
+import React, { useState } from 'react';
 
-function Test(){
-  const [img,setImg] = useState(null)
-  const [test,setTest] = useState(null);
-  const [ig,setig] = useState(null);
-  const num = 4205
-  const [a,setA] = useState(null)
+const App = () => {
+  const [content, setContent] = useState('');
 
-  const input = (event) => {
-    const data = event.target.value;
-    setImg(data);
-    console.log(img);
+  const transformText = (text) => {
+    // "해가 뜨고 난후"를 "해가 지고 난후"로 변환
+    const transformedText = text.replace("해가 뜨고 난후", "해가 지고 난후");
+    return transformedText;
   };
 
-  const submit= () =>{
-    console.log("aa")
-    axios.get('/reviews')
-    .then(res=>{
-      console.log(res.data.data)
-      console.log(res.data.data[img].amazonS3s[0].filename)
-      console.log(res.data.data[img].amazonS3s)
-      console.log(res.data.data[img].amazonS3s[0].fileName)
-      setA(res.data.data[img].amazonS3s[0].fileName)
-      
-    }).catch(err=>{
+  const handleInputChange = (e) => {
+    setContent(e.target.value);
+  };
 
-    })
-  }
-
-  useEffect(()=>{
-    console.log('b')
-    setig( <img alt="dd" src={`https://dev-server-delivery.s3.ap-northeast-2.amazonaws.com/${a}`}></img> )
-  },[a])
-
-
-    return <div className="container-test ">
-      <div className="etc"></div>
-      <input type="text" onChange={input}></input>
-      <button onClick={e=>{e.preventDefault(); setTest(img); submit()}}>전송</button>
-      {ig}
+  return (
+    <div>
+      <textarea
+        id="content"
+        value={content}
+        onChange={handleInputChange}
+        rows={5}
+      />
+      <div className="output-section">
+        {transformText(content)}
+      </div>
     </div>
-}
+  );
+};
 
-export default Test;
+export default App;

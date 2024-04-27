@@ -2,41 +2,55 @@ import { useEffect, useRef, useState } from 'react';
 import './Login.css';
 import { useForm } from 'react-hook-form';
 import axios from "axios";
+import userDto from "../../../dumydata/user.json"
 import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 function Login(){
+
     const expirationDate = new Date();
-    expirationDate.setMinutes(expirationDate.getMinutes() + 30);
-    const { handleSubmit, register, formState: { errors } } = useForm();
+    expirationDate.setMinutes(expirationDate.getMinutes() + 30)
+  
+    const { handleSubmit, register, formState: { errors } } = useForm()
     const onsubmit = async dt => {
-      window.location.href="/storeList/?id=CHICKEN"
-      axios.post('/users/login', JSON.stringify(dt), {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      .then((response) => {
-        console.log(response); // 전송 결과를 처리하는 코드
+      // await new Promise((r) => setTimeout(r, 1000));
 
-        const token = response.data; // 서버에서 받은 토큰 값
-        console.log(token)
-        
-        localStorage.setItem('token', JSON.stringify(token));
-
-        window.location.href="/storeList/?id=CHICKEN"
-      })
-      .catch((error) => {
-        console.error(error); // 오류를 처리하는 코드
-        alert("아이디가 없거나 비밀번호가 틀립니다.")
-      });
+      console.log(JSON.stringify(dt))
       
+      // axios.post('/users/login', JSON.stringify(dt), {
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   }
+      // })
+      // .then((response) => {
+      //   console.log(response); // 전송 결과를 처리하는 코드
+      //   // alert(response)
+
+      //   const token = response.data; // 서버에서 받은 토큰 값
+      //   console.log(token)
+
+      //   const tokenData = {
+      //     token:token,
+      //     expirationDate:expirationDate.getTime()
+      //   }
+        
+      //   localStorage.setItem('token', JSON.stringify(tokenData));
+
+
+      //   window.location.href="/storeList/?id=CHICKEN"
+
+      // })
+      // .catch((error) => {
+      //   console.error(error); // 오류를 처리하는 코드
+      //   alert("아이디가 없거나 비밀번호가 틀립니다.")
+      // });
+      const JSON_dto = JSON.stringify(userDto)
+      localStorage.setItem("token",JSON_dto)
+      window.location.href="/storeList/?id=CHICKEN"
   };
-
-
 
   return (
     <div className="container-login">
-      <GudieModal/>
       <div className='login-case'>
       <div id='login-title'>
         <h1>로그인</h1>
@@ -66,35 +80,37 @@ function Login(){
         
       </div>
       </div>
+      <ServerLessModal/>
     </div>
   );  
 }
 
 export default Login;
 
-const GudieModal = () =>{
 
-  const ref = useRef(null)
- 
-  useEffect(()=>{
+function ServerLessModal(){
+  const boxRef = useRef(null)
+
+  useGSAP(()=>{
     const tl = gsap.timeline()
-    tl.to(ref.current,{
-      opacity:1,
-      duration:1
+    tl.to(boxRef.current,{
+      duration:0,
+      boxShadow:"0px 0px 0px #1b1b1b4d",
     })
-    tl.to(ref.current,{
+    tl.to(boxRef.current,{
+      duration:1.5,
       opacity:0,
-      duration:2,
-    })
-    tl.to(ref.current,{
-      opacity:0,
-      display:'none'
-    })
+      
+    },0.5)
+    tl.to(boxRef.current,{
+      display:"none" 
+    },2)
   },[])
+
   return (
-    <div ref={ref} className='guide-modal-frame'>
-        AWS 프리티어 기간이 지나서 
-        DB연결이 끊어졌습니다.
+    <div ref={boxRef} className='server-less-modal-container'>
+      <span>프리티어 기간이 끝나서</span>
+      <span>UI만 남아있어요</span>
     </div>
   )
 }

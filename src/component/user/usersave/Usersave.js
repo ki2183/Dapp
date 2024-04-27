@@ -22,28 +22,35 @@ function Usersave(){
     const check_id= watch("username","")
     const email = watch("email","")
     const password = watch("password", "")
-    const email_check_num = watch("email_check","true")
-    
+    const email_check_num = watch("email_check","")
+    const [email_check_val,setEmail_check_val] = useState("true")    
     const [email_check_value,setEmail_check_value] = useState("#@&*asd@#(&fh")
     const [tf ,setTF] = useState(false)
     const EmailCheckHandler=email_=>{
-      setEmail_check_value("true")
       setTF(true)
+      setEmail_check_value("true")
       if(tf===false){
-      //   axios.post('/email/send',JSON.stringify(email_data), {
-      //     headers: {
-      //       'Content-Type': 'application/json'
-      //     }
-      //   })
-      //   .then(res=>{
-      //     console.log(res.data.authCode)
-      //     setEmail_check_value(res.data.authCode)
-      //     console.log(email_check_value)
-      //     setTF(true)
-      //   })
-      //   .catch(err=>{
-      //     console.log(err+"email")
-      //   })
+        setTF(true)
+        setEmail_check_value("true")
+        const email_data = {
+          "email":email_
+        }
+        console.log(email_data)
+        axios.post('/email/send',JSON.stringify(email_data), {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(res=>{
+          console.log(res.data.authCode)
+          setEmail_check_value(res.data.authCode)
+          console.log(email_check_value)
+          setTF(true)
+        })
+        .catch(err=>{
+          setTF(true)
+          setEmail_check_value("true")
+        })
       }
     }
 
@@ -61,40 +68,45 @@ function Usersave(){
           delete dt.street
           delete dt.zipcode
           delete dt.email_check
-          alert('회원가입 완료(사실아님)')
-          window.location.href="/login"
-          // axios.post('/users/save', JSON.stringify(dt), {
-          //   headers: {
-          //     'Content-Type': 'application/json'
-          //   }
-          // })
-          // .then((res) => {
-          //   console.log(res.data); // 전송 결과를 처리하는 코드
-          //   window.location.href="/login"
-          // })
-          // .catch((error) => {
-          //   console.error(error); // 오류를 처리하는 코드
-          // });
+
+          // console.log(JSON.stringify(dt))
+          // alert(JSON.stringify(dt))
+
+          axios.post('/users/save', JSON.stringify(dt), {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          .then((res) => {
+            console.log(res.data); // 전송 결과를 처리하는 코드
+            window.location.href="/login"
+          })
+          .catch((error) => {
+            console.error(error); // 오류를 처리하는 코드
+          });
+
+          alert('서버 없음')
           
       };
 
     async function ID_CHECK(id){
-        setIdcheck(true)
-        // if(id!==undefined){
-        //   try {
-        //       const res = await axios.get(`/users/${id}/check-username`);
-        //       !res.data.data ? alert("사용가능한 아이디 입니다."): alert("아이디가 중복됩니다.")
+        console.log(id)
+        if(id!==undefined){
+          try {
+              const res = await axios.get(`/users/${id}/check-username`);
+              !res.data.data ? alert("사용가능한 아이디 입니다."): alert("아이디가 중복됩니다.")
 
-        //       setIdcheck(res.data.data.authCode);
-        //     } catch (error) {
-        //       console.log("사용불가")
-        //       setIdcheck(true)
-        //     }
-        //   }
-        //   else{
-        //     setIdcheck(true)
-        //     alert("아이디 입력란이 비어있습니다.")
-        //   }
+              setIdcheck(res.data.data.authCode);
+            } catch (error) {
+              console.log("사용불가")
+              setIdcheck(false)
+            }
+          }
+          else{
+            setIdcheck(true)
+            alert("아이디 입력란이 비어있습니다.")
+          }
+          
     }
  
 
@@ -124,7 +136,7 @@ function Usersave(){
                 }}>중복 확인</button>
                 </div>
                 {errors.username && <small role="alert" className='err_mess'>{errors.username.message}</small>}
-                {!errors.username && idcheck!==true && <small role="alert" className='err_mess'>아이디 중복 체크를 완료하세요.</small>}
+                {!errors.username && idcheck===true && <small role="alert" className='err_mess'>아이디 중복 체크를 완료하세요.</small>}
                 <div>
                     <p>비밀번호</p>
                     <input type='password' name="password" placeholder='비밀번호'
@@ -277,18 +289,20 @@ function Usersave(){
                     }}>이메일 확인</button>
                 </div>
                 <div>
-                <input type="text" value={"true"} id = "email-check-input" name="email_check" placeholder="인증번호"
+                <input type="text" value="true" id = "email-check-input" name="email_check" placeholder="인증번호"
+                onChange={e=>setEmail_check_val(e.target.value)}
                  aria-invalid={!isDirty ? undefined : errors.email_check ? "true" : "false"}
                  {...register("email_check", {
-                  // validate: value => "true" === email_check_value || '인증번호가 일치하지 않습니다.',
-                  // validate: value => value === "true" || '인증번호가 일치하지 않습니다.',
-                  validate:value => value === "true" || value === "true",
+                  validate: value => value === "true" || '인증번호가 일치하지 않습니다.',
                   required: "인증번호입력은 필수 입니다.",
-                })}></input> <button id="email-check-check" onClick={e=>{e.preventDefault();
+                })}></input> 
+
+                <button id="email-check-check" onClick={e=>{e.preventDefault();
                   if(email_check_value === '#@&*asd@#(&fh') 
                     alert("아직 인증번호가 발급되지 않았습니다.") 
                   else{
-                    if("true" ===email_check_value) alert("인증번호가 맞습니다.")
+
+                    if(email_check_val===email_check_value) alert("인증번호가 맞습니다.")
                     else alert("인증번호가 다릅니다.")
                   }
                 }}>인증번호 체크</button>

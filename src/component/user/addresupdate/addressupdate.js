@@ -2,13 +2,12 @@ import "./addressupdate.css"
 import axios from "axios";
 import { useCookies } from 'react-cookie';
 import {useEffect , useReft,useState} from "react"
-import { useForm} from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 
 
 
 function UpdateAddress(probs){
-    const [cookies] = useCookies(['token'])
-    const token = cookies.token
+    const token = (JSON.parse(localStorage.getItem('token')) && JSON.parse(localStorage.getItem('token')).token) ? (JSON.parse(localStorage.getItem('token')).token) : null
     const { register, handleSubmit, watch ,formState: { isDirty, errors }, } = useForm({});
 
     const Onsubmit = data=>{
@@ -22,13 +21,14 @@ function UpdateAddress(probs){
         alert(JSON.stringify(dto))
 
         axios.post(`/deliveryAddress/save`, JSON.stringify(dto), {
+        // axios.post(`/deliveryAddresses/save`, JSON.stringify(dto), {
             headers: {
               'Content-Type': 'application/json'
             }
           })
         .then(res=>{
             console.log(res)
-            window.location.href="/storeList/?id=CHICKEN"
+            window.location.href="/"
         }).catch(err=>{
             console.log(err+"axios")
         })

@@ -1,8 +1,9 @@
-.container-orderinfo{
+.container-orderinfo {
+    background-color: #ddd;
+    height: auto;
     margin-top: 60px;
     width: 100%;
-    height: 100vh;
-    background-color: #dddddd;
+    padding-bottom: 50px;
 }
 .container-orderinfo-frame{
     width: 50%;
@@ -93,8 +94,7 @@
 .order-price-div{
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid rgb(235, 235, 235);
-    border-bottom: 1px solid rgb(235, 235, 235);
+    border-bottom: 2px solid rgb(235, 235, 235);
     height: 30px;
     align-items: center;
 }
@@ -104,6 +104,8 @@
 .order-totalprice-p{
     margin-right:10px;
     font-weight: bold;
+}#order-total-price-p-sale{
+    color: red;
 }
 /* --------------------------------------------------------------- */
 

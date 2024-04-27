@@ -1,0 +1,228 @@
+.null-box{
+    height: 50px;
+}.container-board-post{
+    /* margin-top: 30px; */
+    width: 100%;
+    height: 700px;
+    /* border: 1px solid black ; */
+}
+/* -----------------------------게시글-------------------------- */
+
+
+/* 포스트 전체 프레임 */
+.frame-board-posts{
+    width: 100%;
+    height: 700px;
+} 
+
+/* 포스트 한개 프레임 */
+.board-post{
+    height: 68px;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.315);
+    display: grid;
+    grid-template-columns: 3fr 1fr 1.5fr;
+    align-items: center;
+}.board-post:first-child{
+    border-top: 1px solid rgba(0, 0, 0, 0.315);
+}
+
+/* 프레임 내부 */
+.post-title{
+    /* width: 400px; */
+    /* background-color: rgba(0, 0, 0, 0.027); */
+    display: block;
+    align-self: center;
+    padding-left: 30px;
+    margin-right: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 15px;
+    cursor: pointer;
+}
+.post-user{
+    text-align: center;
+    position: relative;
+    /* background-color: rgba(0, 0, 0, 0.027); */
+    font-size: 13px;
+    z-index: 10;
+}
+.post-info{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    /* background-color: rgba(0, 0, 0, 0.027); */
+    align-items: center;
+    justify-content: center;
+    
+}
+.post-info-view{
+    text-align: center;
+    font-size: 13px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+    color: rgba(0, 0, 0, 0.363);
+}
+.post-info-view>span{
+    text-align: center;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.363);
+
+}
+#viewspan{
+    font-size: 10px;
+    margin: 0;
+    margin-top: 2.5px;
+    color: rgba(0, 0, 0, 0.363);
+    font-weight: bold;
+}
+#viewnum{
+    /* margin-bottom: 1px; */
+    color: rgba(0, 0, 0, 0.363);
+    font-weight: bold;
+}
+.post-info-date{
+    text-align: center;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.363);
+    font-weight: bold;
+}
+
+/* -------------------------------------------------------- */
+
+/* ----------------------------버튼---------------------------- */
+.frame-board-button{
+    width: 100%;
+    height: 25px;
+    /* background-color: rgba(0, 0, 0, 0.164); */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.frame-board-button>button{
+    border: 0;
+    background-color: transparent;
+    box-shadow: 1px 1px 2px #66666662;
+}
+
+/* -------------------------------------------------------- */
+.frame-board-searchbar{
+    width: 100%;
+    height: 50px;
+    /* border: 1px solid black; */
+    align-items: center;
+    display: flex;
+}
+.frame-searchbar{
+    /* margin-left: auto; */
+    margin-right: 15px;
+    width: 200px;
+    height: 25px;
+    border: 1.2px solid #ffbb00;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.input-searchbar{
+    height: 100%;
+    width: 80%;
+    padding-left: 15px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+.searchbar-icon{
+    margin: 0;
+    padding: 0;
+    padding-top: 5px;
+    height: 30px;
+    width: 45px;
+    background-color: #ffbb00;
+    border: none;
+}
+.searchbar-icon>span{
+    padding:0;
+    border-radius: 0;
+    font-size: 20px;
+    color: antiquewhite;
+}
+.choice-search{
+    /* margin-left: auto; */
+    margin-right: 5px;
+    width: 45px;
+    height: 25px;
+    border: 1.2px solid #ffbb00;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    flex-direction: column;
+    font-size: 11px;
+    font-weight: bold;
+    color: #afafaf;
+    cursor: pointer;
+}
+.empty-search{
+    margin-left: auto;
+}
+.choice-search-menu{
+    position: relative;
+    margin-top: 2px;
+    margin-left: 5px;
+    width: 40px;
+    height: auto;
+    border: 1.2px solid #ffbb00;
+    background-color: rgb(255, 255, 255);
+    z-index: 12;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    gap: 5px;
+
+}
+.choice-content{
+    margin-left: auto;
+    margin-right: auto;
+    height: 20px;
+}
+
+.choice-search-div{
+    width: 50px;
+    height: 25px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+}
+
+#choice-true{
+    background-color: #ffbb00;
+    color: antiquewhite;
+}
+
+/* ------------------------------- */
+.write-button-div{
+    width: 100%;
+    height: 30px;
+    margin-bottom: 5px;
+    display: flex;
+}
+.write-button-div>button{
+    width: 70px;
+    height: 25px;
+    margin-left: auto;
+    border: none;
+    color: antiquewhite;
+    box-shadow: 1px 1px 2px #66666662;
+    background-color: #ffbb00;
+    font-weight: bold;
+}

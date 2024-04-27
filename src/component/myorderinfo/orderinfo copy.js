@@ -9,10 +9,6 @@ function OrderInfoFrame(){
     const [infoView,setinfoView] = useState([]) 
     const [ordDto , setOrdDto] = useState(null)
     const [limit,setlimit] = useState(false) 
-    const [limit2,setlimit2] = useState(false) 
-    const [storename,setStoreName] = useState([])
-    const [storeID,setStoreID] = useState([])
-    
     
     useEffect(()=>{
 
@@ -22,7 +18,7 @@ function OrderInfoFrame(){
             axios.get(`/orders/${token.id}/user/date-desc`)
             .then((res)=>{
                 console.log(res.data.data)
-                setStoreID(res.data.data)
+                // if(res.data.data && res.data.data.)
                 setOrdDto(res.data.data)
                 setlimit(true)
             })
@@ -31,55 +27,13 @@ function OrderInfoFrame(){
             })
         }
 
-        console.log(storeID)
-        const getStoreName = async() => {
-            
-            const storename_ = []
-
-            try{
-                const requests = storeID.map(el => axios.get(`/stores/${el.storeId}`));
-                const responses = await Promise.all(requests);
-
-                responses.forEach(res =>{
-                    storename_.push(res.data.data.name)
-                })
-
-                setStoreName(storename_)
-                console.log(storename_)
-                setlimit2(true)
-                setInfo()
-
-            }catch(err){
-                console.log(err);
-            }
-            // storeID.forEach(el => {
-            //     axios.get(`/stores/${el.storeId}`)
-            //     .then(res=>{
-            //         storename_.push(res.data.data.name)
-            //         console.log(res.data.data.name)
-            //     })
-            //     .catch(err=>{
-            //         console.log(err)
-            //     })
-            // });
-            
-            // setStoreName(storename_)
-            // console.log(storename_)
-            // setlimit2(true)
-            // setInfo()
-        }
-
-        console.log(storename)
-
-
         const setInfo = () => {
             const infoView_ = []
 
 
-            let j=0
-            console.log(storename[j])
+
             ordDto.forEach(el => {
-                console.log(storename[j])
+                
                 const mon = el.orderDate.substr(5, 2); //달
                 const day =el.orderDate.substr(8, 2); //일
 
@@ -130,17 +84,17 @@ function OrderInfoFrame(){
                     <div className="order-frame">
                         <div className="order-date-frame">  
                             <p>{mon}{day} ({Day}) {el.status}</p>
-                            <button onClick={e =>{ e.preventDefault(); alert("아직연결안함"); window.location.href = `/order/?id=${storename[j]}` }}>가게보기</button>
+                            <button onClick={e =>{ e.preventDefault(); alert("아직연결안함")}}>가게보기</button>
                         </div>
                         <div className="order-etc-frame">
-                            <p className="order-etc-storename">{storename[j]}</p>
+                            <p className="order-etc-storename">가게이름</p>
                             {onemenu}
                         </div>
                         {menus}
                         <div className="order-totalprice-frame">
                         <div className="order-price-div">
                                 <p className="order-price-p">할인 금액</p>
-                                <p className="order-totalprice-p" id="order-total-price-p-sale">{el.paymentPrice!==null ? totalPrice-el.paymentPrice : 0}원</p>
+                                <p className="order-totalprice-p" id="order-total-price-p-sale">-{el.paymentPrice!==null ? totalPrice-el.paymentPrice : 0}원</p>
                             </div>
                             <div className="order-price-div">
                                 <p className="order-price-p">주문금액</p>
@@ -153,10 +107,8 @@ function OrderInfoFrame(){
                         </div>
                     </div>
                 )
-                j++
             });
             setinfoView(infoView_)
-            console.log("끝")
         }
 
         (token && token.id)? tf=true : tf=false
@@ -165,39 +117,11 @@ function OrderInfoFrame(){
             console.log(token.id)
             if(!limit)
                 getUserOrder()
-                if(!limit2 && limit===true)
-                    getStoreName()
-        
             if(ordDto !== null)
                 setInfo()
         }
 
-        console.log(storename)
-    },[ordDto,storename,storeID])
-
-    // useEffect(()=>{
-    //     console.log(storeID)
-    //     const getStoreName = () => {
-            
-    //         const storename_ = []
-    //         storeID.forEach(el => {
-    //             axios.get(`/stores/${el.storeId}`)
-    //             .then(res=>{
-    //                 storename_.push(res.data.data.name)
-    //                 console.log(res.data.data.name)
-    //             })
-    //             .catch(err=>{
-    //                 console.log(err)
-    //             })
-    //         });
-            
-    //         setStoreName(storename_)
-    //         console.log(storename_)
-            
-    //     }
-    //     getStoreName()
-    //     console.log(storename)
-    // },[storeID])
+    },[ordDto])
 
     return <div className="container-orderinfo-frame">
         {infoView}
@@ -253,8 +177,8 @@ function OrderCSSTEST(){
 function OrderInfo() {
     return <div className="container-orderinfo">
         <OrderInfoFrame/>
-        {/* <OrderCSSTEST/>*/}
-       
+        {/* <OrderCSSTEST/>
+        <OrderCSSTEST/><OrderCSSTEST/><OrderCSSTEST/><OrderCSSTEST/> */}
 
     </div>
 }
